@@ -33,7 +33,7 @@ export default function AttendancePage() {
   const attendancePercentage = ((presentCount / totalStudents) * 100).toFixed(1);
 
   // Toggle attendance
-  const toggleAttendance = (id) => {
+  const toggleAttendance = (id: number) => {
     setStudents(students.map(student => 
       student.id === id ? { ...student, present: !student.present } : student
     ));
