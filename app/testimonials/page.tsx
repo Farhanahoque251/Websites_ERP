@@ -1,216 +1,341 @@
 'use client';
 
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Star, Quote, ChevronLeft, ChevronRight, Award, Users, ThumbsUp, Calendar } from 'lucide-react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
 
-export default function Home() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const features = [
-    { icon: '🎓', title: 'Student Management', desc: 'Complete student lifecycle from admission to alumni tracking', popular: true },
-    { icon: '👆', title: 'Biometric Attendance', desc: 'Smart attendance with real-time parent notifications' },
-    { icon: '💰', title: 'Fee Management', desc: 'Automated fee collection with online payment gateway', popular: true },
-    { icon: '💳', title: 'Online Payment', desc: 'Secure bKash, Nagad, and card payment integration' },
-    { icon: '📝', title: 'Exam Management', desc: 'Complete examination workflow with auto-grading' },
-    { icon: '🏆', title: 'Result Processing', desc: 'Automatic grade calculation and report cards', popular: true },
-    { icon: '👨‍🏫', title: 'Teacher Management', desc: 'Complete teacher profiles and performance tracking' },
-    { icon: '📢', title: 'SMS Notifications', desc: 'Bulk SMS for notices, fees, and emergencies' },
-    { icon: '📊', title: 'Analytics Dashboard', desc: 'Real-time insights and predictive analytics' },
-    { icon: '🔒', title: 'Role-based Access', desc: 'Secure access for admin, teachers, parents, students' },
-    { icon: '📅', title: 'Class Routine', desc: 'Automated schedule management and timetables' },
-    { icon: '💰', title: 'Payroll Management', desc: 'Teacher and staff salary automation' },
-  ];
-
-  const pricingPlans = [
-    {
-      name: 'Starter',
-      price: '4,999',
-      period: 'month',
-      description: 'Perfect for small schools',
-      features: ['Up to 500 Students', 'Up to 20 Teachers', 'Basic Attendance', 'Fee Management', 'Parent Portal', 'Email Support'],
-      popular: false
-    },
-    {
-      name: 'Professional',
-      price: '9,999',
-      period: 'month',
-      description: 'Best for growing schools',
-      features: ['Up to 2000 Students', 'Unlimited Teachers', 'Biometric Attendance', 'Complete Fee Management', 'Exam Management', 'Payroll', 'SMS Notifications', 'Priority Support'],
-      popular: true
-    },
-    {
-      name: 'Enterprise',
-      price: 'Custom',
-      period: 'Contact Us',
-      description: 'For large institutions',
-      features: ['Unlimited Students', 'Multi-School Management', 'Custom Development', 'Dedicated Support', '24/7 Phone Support', 'On-site Training', 'SLA Agreement'],
-      popular: false
-    }
-  ];
+export default function TestimonialsPage() {
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const testimonials = [
-    { name: 'Md. Rafiqul Islam', role: 'Principal', school: 'Ideal School & College', text: 'ShikkhaERP has revolutionized our school management. The attendance and fee management features have saved us countless hours of manual work.', rating: 5 },
-    { name: 'Mrs. Sharmin Akter', role: 'Administrator', school: 'Sunbeams School', text: 'The parent portal is amazing! Parents can now track their children\'s progress in real-time. The SMS notification system keeps everyone informed.', rating: 5 },
-    { name: 'Prof. Abdul Mannan', role: 'Chairman', school: 'Scholars International School', text: 'Excellent support team and robust features. The payroll management alone has made our HR department much more efficient.', rating: 5 },
+    {
+      id: 1,
+      name: 'Md. Rafiqul Islam',
+      position: 'Principal',
+      school: 'Ideal School & College, Dhaka',
+      content: 'ShikkhaERP has revolutionized our school management. The attendance and fee management features have saved us countless hours of manual work. Our parents love the real-time updates and transparency.',
+      rating: 5,
+      date: 'March 2024',
+      image: '👨‍🏫',
+      category: 'School Leader'
+    },
+    {
+      id: 2,
+      name: 'Mrs. Sharmin Akter',
+      position: 'Administrator',
+      school: 'Sunbeams School, Chittagong',
+      content: 'The parent portal is amazing! Parents can now track their children\'s progress in real-time. The SMS notification system keeps everyone informed about important updates and events.',
+      rating: 5,
+      date: 'February 2024',
+      image: '👩‍💼',
+      category: 'Administrator'
+    },
+    {
+      id: 3,
+      name: 'Prof. Abdul Mannan',
+      position: 'Chairman',
+      school: 'Scholars International School',
+      content: 'Excellent support team and robust features. The payroll management alone has made our HR department much more efficient. Highly recommended for any educational institution.',
+      rating: 5,
+      date: 'January 2024',
+      image: '👨‍🎓',
+      category: 'Board Member'
+    },
+    {
+      id: 4,
+      name: 'Dr. Farhana Zaman',
+      position: 'Academic Director',
+      school: 'Oxford International School',
+      content: 'The examination and result management system is exactly what we needed. Report card generation is now automatic and error-free. It has significantly reduced our workload.',
+      rating: 5,
+      date: 'December 2023',
+      image: '👩‍🏫',
+      category: 'Academic Director'
+    },
+    {
+      id: 5,
+      name: 'Mr. Kamal Hossain',
+      position: 'IT Director',
+      school: 'Maple Leaf International School',
+      content: 'The technical support team is outstanding. Any issues we face are resolved within hours. The system is reliable, secure, and user-friendly for all staff members.',
+      rating: 5,
+      date: 'November 2023',
+      image: '👨‍💻',
+      category: 'IT Director'
+    },
+    {
+      id: 6,
+      name: 'Ms. Tahmina Begum',
+      position: 'Parent Representative',
+      school: 'DPS STS School Dhaka',
+      content: 'As a parent, I love the transparency ShikkhaERP provides. I can check my child\'s attendance, grades, and fee status anytime. The mobile app is very convenient.',
+      rating: 5,
+      date: 'October 2023',
+      image: '👩‍👧',
+      category: 'Parent'
+    },
   ];
+
+  const stats = [
+    { value: '98%', label: 'Customer Satisfaction', icon: ThumbsUp },
+    { value: '500+', label: 'Happy Schools', icon: Users },
+    { value: '4.9/5', label: 'Average Rating', icon: Star },
+    { value: '24/7', label: 'Support Available', icon: Calendar },
+  ];
+
+  const nextSlide = () => {
+    setActiveIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevSlide = () => {
+    setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
 
   return (
     <div>
       {/* Hero Section */}
-      <section style={{
-        minHeight: '100vh',
-        paddingTop: '120px',
-        paddingBottom: '80px',
-        background: 'linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #ecfeff 100%)',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
-          <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'white', padding: '8px 20px', borderRadius: '100px', marginBottom: '24px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
-              <span>🎓</span>
-              <span style={{ fontWeight: 500 }}>Trusted by 500+ Schools in Bangladesh</span>
-            </div>
-            
-            <h1 style={{ fontSize: 'clamp(40px, 5vw, 64px)', fontWeight: 800, marginBottom: '24px', lineHeight: 1.2 }}>
-              Smart School Management
-              <br />
-              <span style={{ background: 'linear-gradient(135deg, #2563eb, #0891b2)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                System for Bangladesh
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20 animate-pulse"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
+        </div>
+        
+        <div className="container-custom relative z-10 py-20 md:py-24">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-4"
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-500/20 rounded-full text-emerald-400 text-sm font-medium">
+                <Star className="w-3 h-3" />
+                Testimonials
               </span>
-            </h1>
-            
-            <p style={{ fontSize: '18px', color: '#4b5563', marginBottom: '32px', lineHeight: 1.6 }}>
-              One platform to manage admissions, attendance, fees, payroll, and administration.
-              Join the digital transformation of Bangladeshi education.
-            </p>
-            
-            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link href="/request-demo" className="btn-primary" style={{ background: 'linear-gradient(135deg, #2563eb, #0891b2)', color: 'white', padding: '14px 36px', borderRadius: '12px', fontWeight: 600, textDecoration: 'none' }}>
-                Start Free Trial →
-              </Link>
-              <Link href="#features" className="btn-secondary" style={{ border: '2px solid #2563eb', color: '#2563eb', padding: '12px 34px', borderRadius: '12px', fontWeight: 600, textDecoration: 'none' }}>
-                Explore Features
-              </Link>
-            </div>
-            
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px', borderTop: '1px solid #e5e7eb', paddingTop: '48px', marginTop: '48px' }}>
-              <div><div style={{ fontSize: '28px', fontWeight: 'bold', color: '#2563eb' }}>500+</div><div style={{ color: '#6b7280' }}>Schools</div></div>
-              <div><div style={{ fontSize: '28px', fontWeight: 'bold', color: '#2563eb' }}>250K+</div><div style={{ color: '#6b7280' }}>Students</div></div>
-              <div><div style={{ fontSize: '28px', fontWeight: 'bold', color: '#2563eb' }}>10K+</div><div style={{ color: '#6b7280' }}>Teachers</div></div>
-              <div><div style={{ fontSize: '28px', fontWeight: 'bold', color: '#2563eb' }}>98%</div><div style={{ color: '#6b7280' }}>Satisfaction</div></div>
-            </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+                What Our{' '}
+                <span className="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
+                  Customers Say
+                </span>
+              </h1>
+              <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+                Trusted by 500+ schools across Bangladesh. Read what school leaders and parents have to say about ShikkhaERP.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Partners Section */}
-      <section style={{ padding: '48px 0', background: '#f9fafb', borderTop: '1px solid #e5e7eb', borderBottom: '1px solid #e5e7eb' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <p style={{ textAlign: 'center', color: '#6b7280', textTransform: 'uppercase', fontSize: '12px', letterSpacing: '1px', marginBottom: '32px' }}>
-            Trusted by leading educational institutions
-          </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '40px' }}>
-            {['Ideal School', 'Sunbeams School', 'Scholars Intl', 'Oxford Intl', 'Maple Leaf', 'DPS STS'].map((school, i) => (
-              <div key={i} style={{ padding: '10px 24px', background: 'white', borderRadius: '10px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
-                <span style={{ fontWeight: 500, color: '#4b5563' }}>{school}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section id="features" style={{ padding: '80px 0', background: 'white' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <span style={{ display: 'inline-block', background: 'linear-gradient(135deg, #dbeafe, #cffafe)', color: '#2563eb', padding: '6px 16px', borderRadius: '50px', fontSize: '14px', fontWeight: 600, marginBottom: '16px' }}>Powerful Features</span>
-            <h2 style={{ fontSize: '36px', fontWeight: 800, marginBottom: '16px' }}>Everything You Need to <span style={{ background: 'linear-gradient(135deg, #1e3a8a, #2563eb, #0891b2)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Manage Your School</span></h2>
-            <p style={{ fontSize: '18px', color: '#6b7280', maxWidth: '600px', margin: '0 auto' }}>Built specifically for Bangladeshi schools with local requirements in mind</p>
-          </div>
-          
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '24px' }}>
-            {features.map((feature, i) => (
-              <div key={i} style={{ padding: '28px', background: '#f9fafb', borderRadius: '20px', border: '1px solid #e5e7eb', position: 'relative', transition: 'all 0.3s' }}>
-                {feature.popular && <div style={{ position: 'absolute', top: '-10px', right: '20px', background: 'linear-gradient(135deg, #2563eb, #0891b2)', color: 'white', padding: '4px 12px', borderRadius: '20px', fontSize: '11px', fontWeight: 'bold' }}>POPULAR</div>}
-                <div style={{ fontSize: '44px', marginBottom: '16px' }}>{feature.icon}</div>
-                <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '10px' }}>{feature.title}</h3>
-                <p style={{ color: '#6b7280', lineHeight: 1.6 }}>{feature.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" style={{ padding: '80px 0', background: '#f9fafb' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <span style={{ display: 'inline-block', background: 'linear-gradient(135deg, #dbeafe, #cffafe)', color: '#2563eb', padding: '6px 16px', borderRadius: '50px', fontSize: '14px', fontWeight: 600, marginBottom: '16px' }}>Pricing</span>
-            <h2 style={{ fontSize: '36px', fontWeight: 800, marginBottom: '16px' }}>Simple, Transparent Pricing</h2>
-            <p style={{ fontSize: '18px', color: '#6b7280' }}>Choose the perfect plan for your school. No hidden fees.</p>
-          </div>
-          
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
-            {pricingPlans.map((plan, i) => (
-              <div key={i} style={{ background: 'white', borderRadius: '24px', padding: '32px', boxShadow: plan.popular ? '0 25px 50px -12px rgba(0,0,0,0.25)' : '0 1px 3px rgba(0,0,0,0.1)', border: plan.popular ? '2px solid #2563eb' : '1px solid #e5e7eb', position: 'relative' }}>
-                {plan.popular && <div style={{ position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)', background: '#2563eb', color: 'white', padding: '6px 20px', borderRadius: '30px', fontSize: '12px', fontWeight: 'bold' }}>MOST POPULAR</div>}
-                <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '12px' }}>{plan.name}</h3>
-                <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '24px' }}>{plan.description}</p>
-                <div style={{ marginBottom: '24px' }}>
-                  {plan.price === 'Custom' ? (
-                    <span style={{ fontSize: '32px', fontWeight: 'bold' }}>Custom</span>
-                  ) : (
-                    <><span style={{ fontSize: '48px', fontWeight: 'bold' }}>৳{plan.price}</span><span style={{ color: '#6b7280' }}>/{plan.period}</span></>
-                  )}
+      {/* Stats Section */}
+      <section className="py-12 bg-white dark:bg-gray-900 border-b">
+        <div className="container-custom">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="p-4"
+              >
+                <div className="w-12 h-12 mx-auto bg-emerald-50 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center mb-3">
+                  <stat.icon className="w-6 h-6 text-emerald-600" />
                 </div>
-                <ul style={{ listStyle: 'none', padding: 0, marginBottom: '32px' }}>
-                  {plan.features.map((feature, j) => (
-                    <li key={j} style={{ padding: '8px 0', color: '#4b5563', display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#10b981' }}>✓</span> {feature}</li>
-                  ))}
-                </ul>
-                <Link href={plan.name === 'Enterprise' ? '/contact' : '/request-demo'} style={{ background: plan.popular ? 'linear-gradient(135deg, #2563eb, #0891b2)' : 'white', color: plan.popular ? 'white' : '#2563eb', border: plan.popular ? 'none' : '2px solid #2563eb', padding: '14px', borderRadius: '12px', fontWeight: 600, textDecoration: 'none', textAlign: 'center', display: 'block' }}>
-                  {plan.buttonText || 'Get Started'}
-                </Link>
-              </div>
+                <div className="text-2xl font-bold text-slate-800 dark:text-white">{stat.value}</div>
+                <div className="text-sm text-slate-500 dark:text-slate-400">{stat.label}</div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" style={{ padding: '80px 0', background: 'white' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <span style={{ display: 'inline-block', background: 'linear-gradient(135deg, #dbeafe, #cffafe)', color: '#2563eb', padding: '6px 16px', borderRadius: '50px', fontSize: '14px', fontWeight: 600, marginBottom: '16px' }}>Testimonials</span>
-            <h2 style={{ fontSize: '36px', fontWeight: 800, marginBottom: '16px' }}>Trusted by School Leaders</h2>
-            <p style={{ fontSize: '18px', color: '#6b7280' }}>See what our customers say about ShikkhaERP</p>
+      {/* Featured Testimonial Carousel */}
+      <section className="py-16 bg-gradient-to-r from-emerald-50 to-blue-50 dark:from-emerald-900/10 dark:to-blue-900/10">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto">
+            <div className="relative">
+              {/* Main Testimonial Card */}
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden"
+              >
+                <div className="bg-gradient-to-r from-emerald-600 to-blue-600 px-6 py-4">
+                  <div className="flex items-center gap-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                </div>
+                <div className="p-8 md:p-10">
+                  <Quote className="w-10 h-10 text-emerald-200 dark:text-emerald-800 mb-4" />
+                  <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+                    "{testimonials[activeIndex].content}"
+                  </p>
+                  <div className="flex items-center gap-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                    <div className="w-14 h-14 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full flex items-center justify-center text-2xl">
+                      {testimonials[activeIndex].image}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-800 dark:text-white text-lg">
+                        {testimonials[activeIndex].name}
+                      </h4>
+                      <p className="text-sm text-emerald-600">{testimonials[activeIndex].position}</p>
+                      <p className="text-xs text-slate-500">{testimonials[activeIndex].school}</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Navigation Buttons */}
+              <button
+                onClick={prevSlide}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:shadow-xl transition"
+              >
+                <ChevronLeft className="w-5 h-5 text-slate-600" />
+              </button>
+              <button
+                onClick={nextSlide}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:shadow-xl transition"
+              >
+                <ChevronRight className="w-5 h-5 text-slate-600" />
+              </button>
+            </div>
+
+            {/* Dots */}
+            <div className="flex justify-center gap-2 mt-6">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === activeIndex ? 'w-8 bg-emerald-600' : 'bg-slate-300'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
-          
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '32px' }}>
-            {testimonials.map((t, i) => (
-              <div key={i} style={{ background: '#f9fafb', borderRadius: '20px', padding: '32px', border: '1px solid #e5e7eb' }}>
-                <div style={{ display: 'flex', gap: '4px', marginBottom: '16px' }}>{'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}</div>
-                <p style={{ color: '#4b5563', lineHeight: 1.6, marginBottom: '24px', fontStyle: 'italic' }}>"{t.text}"</p>
-                <div><div style={{ fontWeight: 'bold' }}>{t.name}</div><div style={{ color: '#6b7280', fontSize: '14px' }}>{t.role}, {t.school}</div></div>
-              </div>
+        </div>
+      </section>
+
+      {/* All Testimonials Grid */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-3">
+              What Our Customers Say
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400">
+              Read real stories from school leaders who trust ShikkhaERP
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-slate-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition-all"
+              >
+                <div className="flex items-center gap-1 mb-3">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                  "{testimonial.content.substring(0, 120)}..."
+                </p>
+                <div className="flex items-center gap-3 pt-3 border-t border-slate-200 dark:border-slate-700">
+                  <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full flex items-center justify-center text-xl">
+                    {testimonial.image}
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-800 dark:text-white text-sm">
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-xs text-emerald-600">{testimonial.position}</p>
+                    <p className="text-xs text-slate-500">{testimonial.school}</p>
+                  </div>
+                </div>
+              </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Video Testimonials Section */}
+      <section className="py-16 bg-slate-50 dark:bg-gray-800">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-3">
+              Video Testimonials
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400">
+              Hear from our customers in their own words
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg">
+              <div className="bg-gradient-to-br from-emerald-600 to-blue-600 p-8 text-center">
+                <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-3xl">👨‍🏫</span>
+                </div>
+                <h3 className="text-white font-bold text-lg">Md. Rafiqul Islam</h3>
+                <p className="text-white/80 text-sm">Principal, Ideal School & College</p>
+              </div>
+              <div className="p-6">
+                <p className="text-slate-600 dark:text-slate-300 text-center">
+                  "ShikkhaERP has transformed how we manage our school. Highly recommended!"
+                </p>
+              </div>
+            </div>
+            <div className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg">
+              <div className="bg-gradient-to-br from-emerald-600 to-blue-600 p-8 text-center">
+                <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-3xl">👩‍💼</span>
+                </div>
+                <h3 className="text-white font-bold text-lg">Mrs. Sharmin Akter</h3>
+                <p className="text-white/80 text-sm">Administrator, Sunbeams School</p>
+              </div>
+              <div className="p-6">
+                <p className="text-slate-600 dark:text-slate-300 text-center">
+                  "The parent portal has been a game-changer for communication with parents."
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section style={{ padding: '80px 0', background: 'linear-gradient(135deg, #1e3a8a, #0e7490)', textAlign: 'center' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <h2 style={{ fontSize: 'clamp(32px, 4vw, 42px)', fontWeight: 'bold', color: 'white', marginBottom: '16px' }}>Ready to Transform Your School Management?</h2>
-          <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.9)', marginBottom: '32px' }}>Join 500+ schools in Bangladesh that trust ShikkhaERP</p>
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/request-demo" style={{ background: 'white', color: '#1e3a8a', padding: '14px 36px', borderRadius: '12px', fontWeight: 'bold', textDecoration: 'none' }}>Start Free Trial</Link>
-            <Link href="/contact" style={{ border: '2px solid white', color: 'white', padding: '14px 36px', borderRadius: '12px', fontWeight: 'bold', textDecoration: 'none' }}>Contact Sales</Link>
+      <section className="py-16 bg-gradient-to-r from-emerald-600 to-blue-600">
+        <div className="container-custom text-center">
+          <Award className="w-12 h-12 text-white mx-auto mb-4" />
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+            Join 500+ Happy Schools
+          </h2>
+          <p className="text-white/90 mb-6 max-w-2xl mx-auto">
+            Experience the ShikkhaERP difference. Start your free trial today.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/request-demo"
+              className="bg-white text-emerald-600 px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all hover:scale-105"
+            >
+              Start Free Trial
+            </Link>
+            <Link
+              href="/contact"
+              className="border-2 border-white text-white px-6 py-3 rounded-xl font-semibold hover:bg-white/10 transition-all"
+            >
+              Contact Sales
+            </Link>
           </div>
         </div>
       </section>

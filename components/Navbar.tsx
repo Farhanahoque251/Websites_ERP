@@ -20,6 +20,8 @@ export default function Navbar() {
     { name: 'Home', path: '/' },
     { name: 'Features', path: '/features' },
     { name: 'Pricing', path: '/pricing' },
+    { name: 'Testimonials', path: '/testimonials' },
+    { name: 'Blog', path: '/blog' },           // ✅ Blog added here
     { name: 'About Us', path: '/about' },
     { name: 'Team', path: '/team' },
     { name: 'Contact Us', path: '/contact' },

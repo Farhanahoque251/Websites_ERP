@@ -58,7 +58,7 @@ export default function Footer() {
               Smart solutions for modern education management. Empowering schools with innovative ERP and LMS technology since 2024.
             </p>
             
-            {/* Social Media Icons with Proper Icons */}
+            {/* Social Media Icons */}
             <div style={{ display: 'flex', gap: '12px' }}>
               {socialIcons.map((social, index) => (
                 <a
@@ -98,7 +98,7 @@ export default function Footer() {
             <ul style={{ listStyle: 'none', padding: 0 }}>
               <li style={{ marginBottom: '12px' }}><Link href="/about" style={{ color: '#c7d2fe', textDecoration: 'none', fontSize: '14px' }}>About Us</Link></li>
               <li style={{ marginBottom: '12px' }}><Link href="/features" style={{ color: '#c7d2fe', textDecoration: 'none', fontSize: '14px' }}>Features</Link></li>
-              <li style={{ marginBottom: '12px' }}><Link href="/services" style={{ color: '#c7d2fe', textDecoration: 'none', fontSize: '14px' }}>Services</Link></li>
+              <li style={{ marginBottom: '12px' }}><Link href="/pricing" style={{ color: '#c7d2fe', textDecoration: 'none', fontSize: '14px' }}>Pricing</Link></li>
               <li><Link href="/contact" style={{ color: '#c7d2fe', textDecoration: 'none', fontSize: '14px' }}>Contact Us</Link></li>
             </ul>
           </div>
@@ -107,9 +107,18 @@ export default function Footer() {
           <div>
             <h4 style={{ fontWeight: 'bold', fontSize: '18px', marginBottom: '24px', color: 'white' }}>Support</h4>
             <ul style={{ listStyle: 'none', padding: 0 }}>
-              <li style={{ marginBottom: '12px' }}><Link href="/privacy" style={{ color: '#c7d2fe', textDecoration: 'none', fontSize: '14px' }}>Privacy Policy</Link></li>
-              <li style={{ marginBottom: '12px' }}><Link href="/terms" style={{ color: '#c7d2fe', textDecoration: 'none', fontSize: '14px' }}>Terms & Conditions</Link></li>
-              <li><Link href="/faq" style={{ color: '#c7d2fe', textDecoration: 'none', fontSize: '14px' }}>FAQs</Link></li>
+              <li style={{ marginBottom: '12px' }}>
+                <Link href="/help" style={{ color: '#c7d2fe', textDecoration: 'none', fontSize: '14px' }}>Help Center</Link>
+              </li>
+              <li style={{ marginBottom: '12px' }}>
+                <Link href="/faq" style={{ color: '#c7d2fe', textDecoration: 'none', fontSize: '14px' }}>FAQs</Link>
+              </li>
+              <li style={{ marginBottom: '12px' }}>
+                <Link href="/privacy" style={{ color: '#c7d2fe', textDecoration: 'none', fontSize: '14px' }}>Privacy Policy</Link>
+              </li>
+              <li>
+                <Link href="/terms" style={{ color: '#c7d2fe', textDecoration: 'none', fontSize: '14px' }}>Terms & Conditions</Link>
+              </li>
             </ul>
           </div>
 
@@ -148,21 +157,21 @@ export default function Footer() {
           <div style={{ display: 'flex', gap: '32px', flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <span style={{ fontSize: '20px' }}>🔒</span>
-              <span style={{ fontSize: '13px' }}>100% Secure SSL Encrypted</span>
+              <span style={{ fontSize: '13px', color: '#c7d2fe' }}>100% Secure SSL Encrypted</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <span style={{ fontSize: '20px' }}>💳</span>
-              <span style={{ fontSize: '13px' }}>Easy Payment</span>
+              <span style={{ fontSize: '13px', color: '#c7d2fe' }}>Easy Payment</span>
               <span style={{ fontSize: '12px', color: '#93c5fd' }}>bKash, Nagad, Rocket</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <span style={{ fontSize: '20px' }}>📱</span>
-              <span style={{ fontSize: '13px' }}>Mobile Ready</span>
+              <span style={{ fontSize: '13px', color: '#c7d2fe' }}>Mobile Ready</span>
               <span style={{ fontSize: '12px', color: '#93c5fd' }}>Access anywhere</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <span style={{ fontSize: '20px' }}>☁️</span>
-              <span style={{ fontSize: '13px' }}>Cloud Based</span>
+              <span style={{ fontSize: '13px', color: '#c7d2fe' }}>Cloud Based</span>
               <span style={{ fontSize: '12px', color: '#93c5fd' }}>24/7 Availability</span>
             </div>
           </div>

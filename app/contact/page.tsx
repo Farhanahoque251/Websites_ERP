@@ -101,6 +101,9 @@ export default function Contact() {
     { icon: Instagram, href: "#", label: "Instagram", color: "hover:bg-pink-600" },
   ];
 
+  // Google Maps Embed URL (Dhaka Office Location)
+  const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.3482374962187!2d90.404178!3d23.734443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8c2f5c9e6d7%3A0x5c8b2e2e8f9a4a3c!2sSiddheswari%20Circular%20Road!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd";
+
   return (
     <div>
       {/* Hero Section */}
@@ -186,7 +189,6 @@ export default function Contact() {
               
               <form onSubmit={handleSubmit} className="p-6 space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  {/* Name Field */}
                   <div>
                     <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Full Name <span className="text-red-500">*</span>
@@ -204,7 +206,6 @@ export default function Contact() {
                     {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                   </div>
                   
-                  {/* Email Field */}
                   <div>
                     <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Email Address <span className="text-red-500">*</span>
@@ -224,7 +225,6 @@ export default function Contact() {
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  {/* Phone Field */}
                   <div>
                     <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Phone Number <span className="text-red-500">*</span>
@@ -242,7 +242,6 @@ export default function Contact() {
                     {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                   </div>
                   
-                  {/* Subject Field */}
                   <div>
                     <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Subject
@@ -260,7 +259,6 @@ export default function Contact() {
                   </div>
                 </div>
                 
-                {/* Message Field */}
                 <div>
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                     Message <span className="text-red-500">*</span>
@@ -278,7 +276,6 @@ export default function Contact() {
                   {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
                 </div>
                 
-                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={loading}
@@ -331,9 +328,9 @@ export default function Contact() {
                 ))}
               </div>
 
-              {/* Office Location Card */}
+              {/* Office Location Card with Map */}
               <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-md border border-slate-100 dark:border-slate-700">
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 mb-4">
                   <div className="w-12 h-12 bg-emerald-50 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Globe className="w-6 h-6 text-emerald-600" />
                   </div>
@@ -343,11 +340,32 @@ export default function Contact() {
                       35/1 Siddheswari Circular Road, <br />
                       Dhaka - 1000, Bangladesh
                     </p>
-                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="text-emerald-600 text-sm mt-2 inline-block hover:underline">
-                      Get Directions →
-                    </a>
                   </div>
                 </div>
+                
+                {/* Google Map */}
+                <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 mb-4">
+                  <iframe
+                    src={mapUrl}
+                    width="100%"
+                    height="250"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="ShikkhaERP Office Location"
+                    className="w-full"
+                  ></iframe>
+                </div>
+                
+                <a 
+                  href="https://maps.google.com/?q=Siddheswari+Circular+Road+Dhaka" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-emerald-600 text-sm inline-flex items-center gap-1 hover:underline"
+                >
+                  Get Directions →
+                </a>
               </div>
 
               {/* Support Hours */}
