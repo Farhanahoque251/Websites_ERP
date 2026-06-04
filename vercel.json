@@ -1,0 +1,14 @@
+{
+  "services": {
+    "frontend": {
+      "root": "frontend",
+      "routePrefix": "/",
+      "framework": "nextjs"
+    },
+    "backend": {
+      "root": "backend",
+      "routePrefix": "/_backend",
+      "framework": "nodejs"
+    }
+  }
+}
