@@ -151,7 +151,7 @@ export default function About() {
               </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Our Mission</h3>
               <p className="text-gray-600 leading-relaxed">
-                To empower educational institutions with intelligent, scalable, and technology-driven 
+                To  empower educational institutions with intelligent, scalable, and technology-driven 
                 solutions that simplify operations, enhance learning experiences, and drive sustainable 
                 digital transformation across Bangladesh.
               </p>
